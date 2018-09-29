@@ -1,0 +1,25 @@
+---
+title: "HW4"
+author: "Alice Friedman"
+date: "9/26/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyr)
+library(dplyr)
+```
+
+```{r}
+raw.flights <- read.csv("https://raw.githubusercontent.com/aliceafriedman/DATA607_HW4/master/a_flights.csv", sep=",", header=TRUE)
+```
+
+```{r}
+# Remove blank rows
+flights <- raw.flights %>% filter(X.3!="") %>% mutate_all(as.character())
+
+# Add column names
+col.names <- c("Airline","Status", flights[1,3:7])
+```
+
